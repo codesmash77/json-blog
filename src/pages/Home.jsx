@@ -11,16 +11,14 @@ import Search from '../components/Search';
 const Home = () => {
   const [data,setData] = useState([]);
   const [search,setSearch] = useState("");
-
+  const devEnv = process.env.NODE_ENV !== "production";
+  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
 
   useEffect(() => {
     loadBlogs();
   }, [])
 
   const loadBlogs = async () => {
-      const devEnv = process.env.NODE_ENV !== "production";
-      const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
-
       const response = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`);
       if(response.status === 200)
         setData(response.data)
