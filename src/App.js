@@ -13,7 +13,7 @@ function App() {
       <Header/>
       <ToastContainer />
       <Routes>
-        <Route path="/**" element={<Home/>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/**/addBlog" element={<AddBlog/>} />
         <Route path="/**/editBlog/:id" element={<AddBlog/>} />
         <Route path="/**/Blog/:id" element={<Blog/>} />
