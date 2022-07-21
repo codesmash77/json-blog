@@ -22,8 +22,6 @@ const AddBlog = () => {
   const { title, author, description, category, imgUrl} = formValue;
   const navigate = useNavigate();
   const {id} = useParams();
-  const devEnv = process.env.NODE_ENV !== "production";
-  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
 
   useEffect(() => {
     
@@ -39,6 +37,8 @@ const AddBlog = () => {
   }, [id])
 
   const getSingleBlog = async (id) => {
+    const devEnv = process.env.NODE_ENV !== "production";
+    const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
     const singleBlog = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${id}`);
     if( singleBlog.status === 200)
       setFormValue({ ...singleBlog.data });
@@ -46,6 +46,8 @@ const AddBlog = () => {
   }
 
   const handleSubmit = async (e) =>{
+      const devEnv = process.env.NODE_ENV !== "production";
+      const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
       e.preventDefault();
       if(!category || category === 'Please Select Category'){
         setCategoryErr(true);
