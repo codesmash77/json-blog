@@ -13,6 +13,8 @@ const Blog = () => {
   const [blog,setBlog] = useState();
   const [relatedBlogs,setRelatedBlogs] = useState([]);
   const {id} = useParams();
+  const devEnv = process.env.NODE_ENV !== "production";
+  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
 
   useEffect(() => {
     if(id){
@@ -21,8 +23,8 @@ const Blog = () => {
   }, [id])
 
   const getSingleBlog = async (id) => {
-    const singleBlog = await axios.get(`http://localhost:5000/blogs/${id}`);
-    const relatedBlogData = await axios.get(`http://localhost:5000/blogs?category=${singleBlog.data.category}&_start=0&_end=7`);
+    const singleBlog = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${id}`);
+    const relatedBlogData = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}?category=${singleBlog.data.category}&_start=0&_end=7`);
     if( singleBlog.status === 200 || relatedBlogData.status === 200){
       setBlog(singleBlog.data);
       setRelatedBlogs(relatedBlogData.data);

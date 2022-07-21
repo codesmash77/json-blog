@@ -22,6 +22,8 @@ const AddBlog = () => {
   const { title, author, description, category, imgUrl} = formValue;
   const navigate = useNavigate();
   const {id} = useParams();
+  const devEnv = process.env.NODE_ENV !== "production";
+  const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
 
   useEffect(() => {
     
@@ -37,7 +39,7 @@ const AddBlog = () => {
   }, [id])
 
   const getSingleBlog = async (id) => {
-    const singleBlog = await axios.get(`http://localhost:5000/blogs/${id}`);
+    const singleBlog = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${id}`);
     if( singleBlog.status === 200)
       setFormValue({ ...singleBlog.data });
     else toast.error("Couldn't Edit Blog! Somethign went wrong!");
@@ -52,13 +54,13 @@ const AddBlog = () => {
         const currentDate = getdate();
         if(!edit){
             const updatedBlog = { ...formValue, date: currentDate};
-            const response = await axios.post('http://localhost:5000/blogs', updatedBlog);
+            const response = await axios.post(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`, updatedBlog);
             if(response.status === 201)
               toast.success("Blog Created Successfully!");
             else 
               toast.error("Something Went Wrong!");
         } else {
-            const response = await axios.put(`http://localhost:5000/blogs/${id}`, formValue);
+            const response = await axios.put(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${id}`, formValue);
             if(response.status === 200)
               toast.success("Blog Updated Successfully!");
             else 

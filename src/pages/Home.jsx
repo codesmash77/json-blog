@@ -18,7 +18,10 @@ const Home = () => {
   }, [])
 
   const loadBlogs = async () => {
-      const response = await axios.get("http://localhost:5000/blogs");
+      const devEnv = process.env.NODE_ENV !== "production";
+      const { REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env
+
+      const response = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`);
       if(response.status === 200)
         setData(response.data)
       else toast.error("Couldnt get Blogs thru axios!")
@@ -26,7 +29,7 @@ const Home = () => {
 
   const handleDelete = async (id) =>{
     if(window.confirm("Are u sure that u want to delete this blog?")){
-      const response = await axios.delete(`http://localhost:5000/blogs/${id}`);
+      const response = await axios.delete(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${id}`);
       if(response.status === 200){
         toast.success("Blog Deleted Successfully")
         loadBlogs();
@@ -37,7 +40,7 @@ const Home = () => {
   
   const handleSearch = async (e) =>{
       e.preventDefault();
-      const response = await axios.get(`http://localhost:5000/blogs?q=${search}`);
+      const response = await axios.get(`${devEnv? REACT_APP_DEV_URL : REACT_APP_PROD_URL}?q=${search}`);
       if(response.status === 200){
         setData(response.data)
       }
