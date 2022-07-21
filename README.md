@@ -2,7 +2,7 @@ A react app that provides a simple blog website using JSON server for Mock APIs 
 
 ![BLOGiT_-_Demo](https://user-images.githubusercontent.com/33595080/180259955-d767a2db-becc-4c65-9c6e-24f994e8171c.gif)
 
-![BLOGiT_-_Demo]<img src="[https://camo.githubusercontent.com/...](https://user-images.githubusercontent.com/33595080/180259955-d767a2db-becc-4c65-9c6e-24f994e8171c.gif)" width="400" height="400" />
+!<img src="[https://camo.githubusercontent.com/...](https://user-images.githubusercontent.com/33595080/180259955-d767a2db-becc-4c65-9c6e-24f994e8171c.gif)" width="400" height="400" />
 
 ![image](https://user-images.githubusercontent.com/33595080/180248298-7f9bde3c-70f1-4c74-9ef7-c249c10b705e.png)
 
