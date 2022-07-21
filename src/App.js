@@ -13,13 +13,13 @@ function App() {
       <Header/>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/#/addBlog" element={<AddBlog/>} />
-        <Route path="/#/editBlog/:id" element={<AddBlog/>} />
-        <Route path="/#/Blog/:id" element={<Blog/>} />
-        <Route path="/#/about" element={<Suspense fallback="...Loading"> <About/> </Suspense>} />
-        <Route path="/#/contact" element={<Suspense fallback="...Loading"><Contact/></Suspense>} />
-        <Route path="/#/*" element={<Suspense fallback="...Loading"><NotFound/></Suspense>} />
+        <Route path="/**" element={<Home/>} />
+        <Route path="/**/addBlog" element={<AddBlog/>} />
+        <Route path="/**/editBlog/:id" element={<AddBlog/>} />
+        <Route path="/**/Blog/:id" element={<Blog/>} />
+        <Route path="/**/about" element={<Suspense fallback="...Loading"> <About/> </Suspense>} />
+        <Route path="/**/contact" element={<Suspense fallback="...Loading"><Contact/></Suspense>} />
+        <Route path="/**/*" element={<Suspense fallback="...Loading"><NotFound/></Suspense>} />
       </Routes>
     </div>
   );
