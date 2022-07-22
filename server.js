@@ -3,13 +3,10 @@ const server = jsonServer.create();
 const cors = require("cors");
 const router = jsonServer.router("./db.json");
 const middleware = jsonServer.defaults({
-    static : {
-  root : "./build",
-  clean_urls: false,
-  routes: {
+    static : "./build",
+    routes : {
     "/**": "index.html"
-  }
-}
+  },
 })
 
 const port = process.env.PORT || 5000
