@@ -16,12 +16,12 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path={devEnv? "addBlog": `${REACT_APP_PROD_URL}/addBlog`} element={<AddBlog/>} />
-        <Route path = {devEnv? "editBlog/:id": `${REACT_APP_PROD_URL}/editBlog/:id`} element={<AddBlog/>} />
-        <Route path={devEnv? "Blog/:id": `${REACT_APP_PROD_URL}/Blog/:id`} element={<Blog/>} />
-        <Route path={devEnv? "about": `${REACT_APP_PROD_URL}/about`} element={<Suspense fallback="...Loading"> <About/> </Suspense>} />
-        <Route path={devEnv? "contact": `${REACT_APP_PROD_URL}/contact`} element={<Suspense fallback="...Loading"><Contact/></Suspense>} />
-        <Route path={devEnv? "*": `${REACT_APP_PROD_URL}/*`} element={<Suspense fallback="...Loading"><NotFound/></Suspense>} />
+        <Route path={devEnv? "addBlog": "https://bl0git.herokuapp.com/addBlog"} element={<AddBlog/>} />
+        <Route path = {devEnv? "editBlog/:id": "https://bl0git.herokuapp.com/editBlog/:id"} element={<AddBlog/>} />
+        <Route path={devEnv? "Blog/:id": "https://bl0git.herokuapp.com/Blog/:id"} element={<Blog/>} />
+        <Route path={devEnv? "about": "https://bl0git.herokuapp.com/about"} element={<Suspense fallback="...Loading"> <About/> </Suspense>} />
+        <Route path={devEnv? "contact": "https://bl0git.herokuapp.com/contact"} element={<Suspense fallback="...Loading"><Contact/></Suspense>} />
+        <Route path={devEnv? "*": "https://bl0git.herokuapp.com/*"} element={<Suspense fallback="...Loading"><NotFound/></Suspense>} />
       </Routes>
     </div>
   );
