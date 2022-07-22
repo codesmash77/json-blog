@@ -4,10 +4,10 @@ const cors = require("cors");
 const router = jsonServer.router("./db.json");
 const middleware = jsonServer.defaults({
     static : {
-  "root" : "build/",
-  "clean_urls" : false,
-  "routes" : {
-    "/**" : "index.html"
+  "root": "./build",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
   }
 }
 })
